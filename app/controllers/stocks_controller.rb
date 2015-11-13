@@ -10,7 +10,7 @@ class StocksController < ApplicationController
       @_current_user ||= session[:user_id] &&
           User.find_by(id: session[:user_id])
       if( params.has_key?(:ticker))
-        chart = yahoo_client.historical_quotes(@stock, { start_date: Time::now-(24*60*60*365), end_date: Time::now })
+        chart = yahoo_client.historical_quotes(@stock, { start_date: Time::now-(24*60*60*90), end_date: Time::now })
         data = yahoo_client.quote([@stock], [:ask, :high, :low, :high_52_weeks, :low_52_weeks, :close, :name], {raw: false})
         #set everything that you will be using on the page
         @ask = data.ask
