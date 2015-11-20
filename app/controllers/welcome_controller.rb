@@ -6,7 +6,7 @@ class WelcomeController < ApplicationController
         #If user is not null then post the message
         if current_user != nil
             #if the form message is empty then dont make a post
-            
+
             accessToken = current_user.token
             @facebook = Koala::Facebook::API.new(accessToken)
 
